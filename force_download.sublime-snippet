@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+/********************
+*@file - path to file
+*/
+function force_download(\$file){
+    if ((isset(\$file))&&(file_exists(\$file))) {
+        header("Content-length: ".filesize(\$file));
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . \$file . '"');
+        readfile("\$file");
+    } else {
+        echo "No file selected";
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>force_download</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

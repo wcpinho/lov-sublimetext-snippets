@@ -1,0 +1,14 @@
+<snippet>
+    <content><![CDATA[
+function _dump(\$data) {
+    if (func_num_args() > 1) {
+        \$data = func_get_args();
+    }
+    return "<pre>".print_r(\$data, 1)."</pre>";
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>dump</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

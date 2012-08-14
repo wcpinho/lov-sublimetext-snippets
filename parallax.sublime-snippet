@@ -1,0 +1,81 @@
+<snippet>
+    <content><![CDATA[
+/* Usage:
+\$('.para-element').each(function(){
+    \$(this).parallax({ 
+        'coeff': \$(this).attr('data-offset'),
+        'stop': \$(this).parents('.section').offset().top + \$(this).parents('.section').height(),
+        'start': \$(this).parents('.section').offset().top - \$(window).height()
+    });
+});
+Reference: http://www.yurbuds.com/
+*/
+(function(\$){
+    \$.fn.parallax = function(options){
+        var \$\$ = \$(this);
+        offset = \$\$.offset();
+        var defaults = {
+            "start": 0,
+            "stop": offset.top + \$\$.height(),
+            "coeff": 0.95,
+            "initPos": \$\$.position().top,
+            "type": "element"
+        };
+        var opts = \$.extend(defaults, options);
+        if(opts.type == "image"){
+            if (navigator.appName=='Microsoft Internet Explorer'){
+                opts.initPos =  parseInt(\$\$.css('backgroundPositionY'));
+            }
+            else{
+                opts.initPos = \$\$.css('background-position').split(' ');
+                opts.initPos = parseInt(opts.initPos[1]);
+            }
+        }
+        return this.each(function(){
+            \$(window).bind('scroll', function() {
+                var win = \$(window),
+                    windowTop = win.scrollTop();
+                    
+                if((windowTop >= opts.start) && (windowTop <= opts.stop)) {
+                    var prnt = \$\$.parent(),
+                        parenttop = prnt.offset().top,
+                        parentheight = prnt.height(),
+                        winheight = win.height(),
+                        parentloc;
+                        
+                    if (parenttop < 10) { parentloc = parenttop + winheight; } else { parentloc = parenttop; }
+                    
+                    if(opts.type == 'element'){
+                        newCoord = parseInt(opts.initPos) + ((parseInt(winheight) + parseInt(windowTop) - parseInt(parentloc)) * opts.coeff);
+                        //console.debug('initpos' + opts.initPos + ' newCoord: ' + newCoord + ' windowTop: ' + windowTop + ' parentoffsetTop: ' + \$\$.parent().offset().top + ' coeff:' + opts.coeff + ' winheight:' + \$(window).height());
+                        \$\$.css({
+                            "top": newCoord + 'px'
+                        });
+                    }
+                    else if(opts.type == "image"){
+                        if (navigator.appName=='Microsoft Internet Explorer'){
+                            var newCoordY = \$\$.css('backgroundPositionY');
+                            newCoordY = opts.initPos + ((windowTop - parenttop) * opts.coeff);
+                            \$\$.css({
+                                "backgroundPositionY": newCoordY + 'px' 
+                            });
+                        }
+                        else{
+                            newCoord = \$\$.css('background-position').split(' ');
+                            newCoord[1] = opts.initPos + ((windowTop - parenttop) * opts.coeff);
+                            \$\$.css({
+                                "background-position": newCoord[0] + newCoord[1] + 'px' 
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    };
+})(jQuery);
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>parallax</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+jQuery.jQueryRandom = 0;
+jQuery.extend(jQuery.expr[":"],{
+    random: function(a, i, m, r) {
+        if (i == 0) {
+            jQuery.jQueryRandom = Math.floor(Math.random() * r.length);
+        };
+        return i == jQuery.jQueryRandom;
+    }
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>random</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

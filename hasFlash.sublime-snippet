@@ -1,0 +1,19 @@
+<snippet>
+    <content><![CDATA[
+\$.hasFlash = function() {
+    if ('navigator' in window && 'plugins' in navigator && navigator.plugins['Shockwave Flash']) {
+        return !!navigator.plugins['Shockwave Flash'].description;
+    }
+    if ('ActiveXObject' in window) {
+        try {
+            return !!new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('\$version');
+        } catch (e) {}
+    }
+    return false;
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>hasFlash</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

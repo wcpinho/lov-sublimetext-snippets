@@ -1,0 +1,53 @@
+<snippet>
+    <content><![CDATA[
+/*
+* Classe de Conexao com MySQL
+* Descricao: Classe que que realiza conexao com o banco de dados.
+* Autor: Felipe Rezende 
+*/
+class MySQL {
+    var \$host = "${1:localhost}";
+    var \$user = "${2:username}";
+    var \$pass = "${3:password}";
+    var \$db   = "${4:database}";
+
+    var \$query;
+    var \$link;
+    var \$result;
+
+    function MySQL(){
+    }
+
+    function connect(){
+        \$this->link = mysql_connect(\$this->host,\$this->user,\$this->pass);
+        if(!\$this->link){
+            echo "Erro na Conexão.<br /><b>MySQL retornou: </b> ".mysql_error()."<br />";
+            die();
+        } elseif (!mysql_select_db(\$this->db,\$this->link)){
+            echo "Erro na seleção do Banco de Dados.<br /><b>MySQL retornou: </b> ".mysql_error()."<br />";
+            die();
+        }
+    }
+
+    function sql(\$query){
+        \$this->connect();
+        \$this->query = \$query;
+        if(\$this->result=mysql_query(\$this->query)){
+            \$this->disconnect();
+            return \$this->result;
+        } else {
+            die("Ocorreu um erro ao executar a Query SQL abaixo:<br />\$query<br /><br /><b>MySQL Retornou: ".mysql_error()."</b>");
+            \$this->disconnect();
+        }
+    }
+
+    function disconnect(){
+        return mysql_close(\$this->link);
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>class_mysql</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

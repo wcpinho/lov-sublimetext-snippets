@@ -1,0 +1,50 @@
+<snippet>
+    <content><![CDATA[
+//usage: \$(element).makeVideo();
+(function(\$){
+    \$.fn.extend({ 
+        makeVideo: function(options) {
+            var defaults = {
+                urlVideo: \$(this).find("a").attr("href"),
+                thumb: false
+            };
+            var opts = \$.extend(defaults, options);
+            return this.each(function() {
+                var o = opts;
+                \$urlVideo = (o.urlVideo.match(/(youtube)/)) ? o.urlVideo.replace(new RegExp("watch\\?v=", "i"), 'v/') : o.urlVideo.replace(new RegExp("vimeo\.com/", "i"), 'vimeo.com/moogaloop.swf?clip_id=');
+                if(\$(this).hasClass("thumb") || o.thumb == true ){
+                    \$idVideo = (\$urlVideo.match(/(youtube)/)) ? \$urlVideo.split("http://www.youtube.com/v/")[1] : \$urlVideo.split("http://www.vimeo.com/moogaloop.swf?clip_id=")[1];
+                    \$video = {
+                        thumb: function(target,type,url){
+                            if(type == 'vimeo'){
+                                \$.getJSON("http://vimeo.com/api/oembed.json?url="+ url +"&callback=?", function(data){
+                                    target.parent().html("<a href='"+ \$urlVideo +"'><img src='"+ data.thumbnail_url +"' /></a>");
+                                });
+                            }else{
+                                target.parent().html("<a href='"+ \$urlVideo +"'><img src='http://i2.ytimg.com/vi/"+ url.split("watch?v=")[1] +"/hqdefault.jpg' /></a>");
+                            }
+                        }
+                    }
+                    if(\$urlVideo.match(/(youtube)/)){
+                        \$video.thumb(\$(this).find("a"),"youtube",o.urlVideo);
+                    }else{
+                        \$video.thumb(\$(this).find("a"),"vimeo",o.urlVideo);
+                    }
+                }else{
+                    \$(this).flash({ width: \$(this).width(), height: \$(this).height(), wmode: 'transparent' }, { version: 9 },
+                        function(htmlOptions) {
+                            htmlOptions.src = \$urlVideo;
+                            \$(this).html(\$.fn.flash.transform(htmlOptions));                      
+                        }
+                    );
+                }
+            });
+        }
+    });
+})(jQuery);
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>makeVideo</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

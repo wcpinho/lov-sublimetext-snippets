@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+\$.getJSON("http://${1:URL}", function(data){
+    \$.each(data.${2:items}, function(i,${3:item}){
+        ${4:commands}
+    });
+}); 
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>getJSON</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

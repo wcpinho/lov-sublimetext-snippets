@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+\$.fn.zebra = function() {
+    \$('tbody tr:visible', this).filter(':odd').removeClass('even').addClass('odd').end().filter(':even').removeClass('odd').addClass('even');
+    return this;
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>zebra</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

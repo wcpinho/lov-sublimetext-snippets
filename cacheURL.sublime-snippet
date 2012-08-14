@@ -1,0 +1,32 @@
+<snippet>
+    <content><![CDATA[
+function cacheURL(\$url, \$path){
+    \$cache_file = \$path . md5(\$url);
+    if(file_exists(\$cache_file)){
+        \$mtime = (time() - filemtime(\$cache_file));
+        if(\$mtime > (15 * 60)){
+            \$cache_rss = @file_get_contents(\$url);
+            \$cache_static = @fopen(\$cache_file, 'wb');
+            @fwrite(\$cache_static, serialize(\$cache_rss));
+            @fclose(\$cache_static);
+        }
+    }else{
+        \$cache_rss = @file_get_contents(\$url);
+        if (is_bool(\$cache_rss) && \$cache_rss == false){
+            // treat error
+        } else {
+            \$cache_static = @fopen(\$cache_file, 'wb');
+            @fwrite(\$cache_static, serialize(\$cache_rss));
+            @fclose(\$cache_static);
+            \$rss = \$cache_rss;
+        }
+    }
+    \$response = @unserialize(@file_get_contents(\$cache_file));
+    return \$response;
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>cacheURL</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

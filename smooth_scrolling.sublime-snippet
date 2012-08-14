@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+//Smooth scrolling within page anchors
+\$("a[href*=#]").click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var \$target = \$(this.hash);
+        \$target = \$target.length && \$target || \$('[name=' + this.hash.slice(1) +']');
+        if (\$target.length) {
+            var target = (\$.browser.opera) ? 'html' : 'html,body';
+            var targetOffset = \$target.offset().top;
+            \$(target).animate({scrollTop: targetOffset}, 1000);
+            return false;
+        }
+    }
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>smooth_scrolling</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

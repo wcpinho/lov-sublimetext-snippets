@@ -1,0 +1,24 @@
+<snippet>
+    <content><![CDATA[
+//usage: \$(element).tabs();        
+jQuery.fn.tabs = function() {
+    var tabs = [];
+    var tabContainers = [];
+    \$(this).find("li a").each(function() {
+        if (\$(this).attr("href").split("#")[1]) {
+            tabs.push(this);
+            tabContainers.push(\$(this.hash).get(0));
+        }
+    });
+    \$(tabs).click(function() {
+        \$(tabContainers).hide().filter(this.hash).fadeIn();
+        \$(tabs).removeClass('hover').filter(this.hash).addClass('hover');
+        return false;
+    }).filter(':first').trigger("click");
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>tabs</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

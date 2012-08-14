@@ -1,0 +1,29 @@
+<snippet>
+    <content><![CDATA[
+/*!
+ * jQuery Scrollbar Width v1.0
+ * 
+ * Copyright 2011, Rasmus Schultz
+ * Licensed under LGPL v3.0
+ * http://www.gnu.org/licenses/lgpl-3.0.txt
+ */
+(function(\$){
+    \$.scrollbarWidth = function() {
+        if (!\$._scrollbarWidth) {
+            var \$body = \$('body');
+            var w = \$body.css('overflow', 'hidden').width();
+            \$body.css('overflow','scroll');
+            w -= \$body.width();
+            if (!w) w=\$body.width()-\$body[0].clientWidth; // IE in standards mode
+            \$body.css('overflow','');
+            \$._scrollbarWidth = w;
+        }
+        return \$._scrollbarWidth;
+    };
+})(jQuery);
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>scrollbarWidth</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

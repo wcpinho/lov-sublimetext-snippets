@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+\$(".video").each(function(){
+    \$urlVideo = \$(this).find("a").attr("href");
+    \$urlVideo = (\$urlVideo.match(/(youtube)/)) ? \$urlVideo.replace(new RegExp("watch\\?v=", "i"), 'v/') : \$urlVideo.replace(new RegExp("vimeo\.com/", "i"), 'vimeo.com/moogaloop.swf?clip_id=');
+    \$(this).flash({ width: \$(this).width(), height: \$(this).height(), wmode: 'opaque' }, { version: 10 }, function(htmlOptions) {
+        htmlOptions.src = \$urlVideo;
+        \$(this).html(\$.fn.flash.transform(htmlOptions));
+    });
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>youtube</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

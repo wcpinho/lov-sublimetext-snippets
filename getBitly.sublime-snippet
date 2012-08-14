@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+function getBitly(\$longurl, \$format = 'json') {
+    \$login = '${1:YOUR_BITLY_LOGIN}';
+    \$apiKey = '${2:YOUR_BITLY_API_KEY}';
+    \$response = file_get_contents('http://api.bit.ly/shorten?version=2.0.1&longUrl='.urlencode(\$longurl).'&login='.\$login.'&apiKey='.\$apiKey.'&format='.\$format);
+    if(strtolower(\$format) == 'json') {
+        \$json = @json_decode(\$response,true);
+        return \$json['results'][\$longurl]['shortUrl'];
+    } else {
+        \$xml = simplexml_load_string(\$response);
+        return 'http://bit.ly/'.\$xml->results->nodeKeyVal->hash;
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>bitly</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

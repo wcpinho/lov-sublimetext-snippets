@@ -1,0 +1,111 @@
+<snippet>
+    <content><![CDATA[
+/**
+ * Googl
+ *
+ * For more information on this file and how to use the class please visit
+ * http://www.hashbangcode.com/blog/googl-url-shortening-service-class-php-528.html
+ *
+ * PHP version 5
+ *
+ * @category Google URL Shortener API
+ * @package  Google URL Shortener API
+ * @author   Philip Norton <philipnorton42@gmail.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.hashbangcode.com/
+ *
+ * http://code.google.com/intl/pt-BR/apis/urlshortener/v1/getting_started.html
+ * Usage:
+ * \$objGoogl = new Googl('AIzaSyCyFxpFmtQHS7mrO8bTGmH6gPb4lz5SXsg');
+ * \$shortUrl = \$objGoogl->shorten('http://www.google.com.br/');
+ * echo \$shortUrl;
+ *
+ */
+
+class Googl {
+
+    private \$apikey;
+    private \$version = 'v1';
+    private \$results;
+    private \$errors = false;
+    private \$googlUrl;
+
+    public function googl(\$apiKey = null) {
+        \$this->apiKey = \$apiKey;
+        \$this->googlUrl = "https://www.googleapis.com/urlshortener/" . \$this->version . "/url";
+    }
+
+    public function shorten(\$url) {
+        \$parameters = '{"longUrl": "' . \$url . '"}';
+        \$curl = curl_init();
+        curl_setopt(\$curl, CURLOPT_POST, true);
+        curl_setopt(\$curl, CURLOPT_POSTFIELDS, \$parameters);
+        curl_setopt(\$curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+        \$url = \$this->googlUrl;
+        if (!is_null(\$this->apiKey)) {
+            \$url .= '?key=' . \$this->apiKey;
+        }
+        curl_setopt(\$curl, CURLOPT_URL, \$url);
+        if (\$this->sendRequest(\$curl)) {
+            return \$this->results->id;
+        }
+        return false;
+    }
+
+    public function analytics(\$shortUrl) {
+        \$url = \$this->googlUrl . '?shortUrl=' . \$shortUrl;
+        \$url .= '&projection=FULL';
+        if (!is_null(\$this->apiKey)) {
+            \$url .= '&key=' . \$this->apiKey;
+        }
+        \$curl = curl_init();
+        curl_setopt(\$curl, CURLOPT_URL, \$url);
+        if (\$this->sendRequest(\$curl)) {
+            return \$this->results;
+        }
+        return false;
+    }
+
+    public function expand(\$shortUrl) {
+        \$url = \$this->googlUrl . '?shortUrl=' . \$shortUrl;
+        if (!is_null(\$this->apiKey)) {
+            \$url .= '&key=' . \$this->apiKey;
+        }
+        \$curl = curl_init();
+        curl_setopt(\$curl, CURLOPT_URL, \$url);
+        if (\$this->sendRequest(\$curl)) {
+            return \$this->results->longUrl;
+        }
+        return false;
+    }
+
+    protected function sendRequest(\$curl) {
+        if (!is_resource(\$curl)) {
+            throw new NotAResourceException('\$curl is not a resource.');
+        }
+        curl_setopt(\$curl, CURLOPT_SSLVERSION, 3);
+        curl_setopt(\$curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt(\$curl, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt(\$curl, CURLOPT_HEADER, false);
+        curl_setopt(\$curl, CURLOPT_RETURNTRANSFER, true);
+        \$data = curl_exec(\$curl);
+        if (\$data === false) {
+            throw new CurlErrorException(curl_error(\$curl));
+        }
+        curl_close(\$curl);
+        \$this->results = json_decode(\$data);
+        \$this->errors = false;
+        if (isset(\$this->results->error)) {
+            \$this->errors = \$this->results->error;
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>class_googl2</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

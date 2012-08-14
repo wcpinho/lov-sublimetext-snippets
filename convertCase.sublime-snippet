@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[
+function convertCase(\$str, \$case = 'upper'){
+    switch(\$case){
+    case "upper" :
+        \$str = strtoupper(htmlentities(utf8_decode(\$str)));
+        \$pattern = '/&([A-Z])(UML|ACUTE|CIRC|TILDE|RING|ELIG|GRAVE|SLASH|HORN|CEDIL|TH);/e';
+        \$replace = "'&'.'\\1'.strtolower('\\2').';'"; //convert the important bit back to lower
+    break;
+    case "lower" :
+        \$str = strtolower(\$str);
+    break;
+    }
+    \$str = preg_replace(\$pattern, \$replace, \$str);
+    return \$str;
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>convertCase</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

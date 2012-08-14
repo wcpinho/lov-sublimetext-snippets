@@ -1,0 +1,14 @@
+<snippet>
+    <content><![CDATA[
+highlight: function(element, errorClass) {
+    \$action = (\$(element).attr("type") == 'checkbox') ? \$(element).next().addClass("error") : \$(element).addClass("error");
+},
+unhighlight: function(element, errorClass) {
+    \$action = (\$(element).attr("type") == 'checkbox') ? \$(element).next().removeClass("error") : \$(element).removeClass("error");
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>highlight</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

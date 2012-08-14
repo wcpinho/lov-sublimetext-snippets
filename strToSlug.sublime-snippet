@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+\$.strToSlug = function(string) {
+    var accents = "àáäâãèéëêìíïîòóöôùúüûñç·/_,:;";
+    var without = "aaaaaeeeeiiiioooouuuunc------";
+    return string.toLowerCase().replace(
+    new RegExp('[' + accents + ']', 'g'), function(c) {
+        return without.charAt(accents.indexOf(c));
+    }).replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-\$/g, '');
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>strToSlug</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

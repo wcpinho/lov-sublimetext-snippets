@@ -1,0 +1,30 @@
+<snippet>
+    <content><![CDATA[
+\$.fn.serializeObject = function() {
+    var arrayData, objectData;
+    arrayData = this.serializeArray();
+    objectData = {};
+    \$.each(arrayData, function() {
+        var value;
+        if (this.value != null) {
+            value = this.value;
+        } else {
+            value = '';
+        }
+        if (objectData[this.name] != null) {
+            if (!objectData[this.name].push) {
+                objectData[this.name] = [objectData[this.name]];
+            }
+            objectData[this.name].push(value);
+        } else {
+            objectData[this.name] = value;
+        }
+    });
+    return objectData;
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>serializeObject</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

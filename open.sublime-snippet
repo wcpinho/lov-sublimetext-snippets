@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+window.open('${1:href}', '${2:name}', 'width=${3:width},height=${4:height},toolbar=no');
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>open</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

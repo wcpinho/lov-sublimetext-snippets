@@ -1,0 +1,29 @@
+<snippet>
+    <content><![CDATA[
+define("DB_HOST", "${1:DB_HOST}");
+define("DB_NAME", "${2:DB_NAME}");
+define("DB_USER", "${3:DB_USER}");
+define("DB_PASS", "${4:DB_PASS}");
+
+class DB {
+    private static \$instance = NULL;
+    private function __construct(){}
+    private function __clone(){}
+    public static function getInstance(){
+        if(!self::\$instance){
+            self::\$instance = new PDO("mysql:host=". DB_HOST .";dbname=". DB_NAME, DB_USER, DB_PASS);
+            self::\$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        return self::\$instance;
+    }
+    final public static function __callStatic(\$chrMethod, \$arrArguments){
+        \$instance = self::getInstance();
+        return call_user_func_array(array(\$instance, \$chrMethod), \$arrArguments);
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>class_pdo</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

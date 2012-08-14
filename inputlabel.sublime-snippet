@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+\$("input + label").click(function() {
+    if (\$(this).prev().attr("type") == 'checkbox') {
+        (\$(this).prev().is(":checked")) ? \$(this).prev().attr("checked", false) : \$(this).prev().attr("checked", true);
+    } else {
+        \$(this).prev().attr("checked", true);
+    }
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>inputlabel</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

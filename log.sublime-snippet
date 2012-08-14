@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+// Allows chainable logging
+// Usage: \$('#someDiv').hide().log('div hidden').addClass('someClass');
+jQuery.fn.log = function(msg){
+    if (console){
+        console.log("%s: %o", msg, this);
+    }
+    return this;
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>log</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

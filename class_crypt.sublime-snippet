@@ -1,0 +1,28 @@
+<snippet>
+    <content><![CDATA[
+class Crypt{
+    protected \$key;
+    public function __construct(\$key){
+        \$this->key = \$key;
+    }
+    public function decode(\$data){
+        for(\$k = \$this->key, \$i = -1, \$l = strlen(\$data); ++\$i < \$l;){
+            \$data[\$i] = chr(ord(\$data[\$i]) ^ (\$k >> 8));
+            \$k = (int)((ord(\$data[\$i]) + \$k) * 52845 + 22719);
+        }
+        return \$data;
+    }
+    public function encode(\$data){
+        for(\$k = \$this->key, \$r = \$data, \$i = -1, \$l = strlen(\$r); ++\$i < \$l;){
+            \$r[\$i] = chr(ord(\$data[\$i]) ^ (\$k >> 8));
+            \$k = (int)((ord(\$data[\$i]) + \$k) * 52845 + 22719);
+        }
+        return \$r;
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>class_crypt</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+/*
+Usage 1: jQuery.parseQuerystring().foo
+Usage 2:
+    //var qs = jQuery.parseQuerystring();
+    //qs['foo'] == "bar"
+    //qs.somevalue == "myvalue"
+*/
+\$.extend({
+    parseQuerystring: function(){
+        var nvpair = {};
+        var qs = window.location.search.replace('?', '');
+        var pairs = qs.split('&');
+        \$.each(pairs, function(i, v){
+            var pair = v.split('=');
+            nvpair[pair[0]] = pair[1];
+        });
+        return nvpair;
+    }
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>parseQuerystring</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

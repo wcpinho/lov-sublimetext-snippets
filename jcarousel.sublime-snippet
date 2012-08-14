@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+\$carouselFotos_initCallback = function(carousel){
+    \$("ul.navCores li a").click(function(){
+        \$cor = \$(this).attr("rel");
+        \$item = \$("ul.listFotos li[rel="+ \$cor +"]:first").index() + 1;
+        carousel.scroll(jQuery.jcarousel.intval(\$item));
+        return false;
+    });
+}
+\$(".carouselFotos ul").jcarousel({ scroll: 2, initCallback: \$carouselFotos_initCallback });
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jcarousel</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

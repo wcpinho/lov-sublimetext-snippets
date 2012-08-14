@@ -1,0 +1,19 @@
+<snippet>
+    <content><![CDATA[
+jQuery.fn.linkify = function(options) { 
+    var defaults = { target: '_self' };
+    var opts = \$.extend(defaults, options);
+    var regexp = /\b((?:[a-z][\w-]+:)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
+    var username = /@(\w+)/gi;
+    var hashtags = /#(\w+)/gi;
+    return this.each(function() {
+        var o = opts;
+        \$(this).html(\$(this).html().replace(regexp,'<a href="\$1" target="'+ o.target +'">\$1</a>').replace(username,'<a href="http://twitter.com/\$1" target="'+ o.target +'">@\$1</a>').replace(hashtags,'<a href="http://search.twitter.com/search?q=\$1" target="'+ o.target +'">#\$1</a>'));
+    });
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>linkify</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

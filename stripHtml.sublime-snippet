@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+//usage: \$(element).stripHtml();
+jQuery.fn.stripHtml = function() { 
+    var regexp = /<("[^"]*"|'[^']*'|[^'">])*>/gi;
+    return this.each(function() {
+        \$(this).html(\$(this).html().replace(regexp,""));
+    });
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>stripHtml</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

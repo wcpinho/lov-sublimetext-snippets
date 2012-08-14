@@ -1,0 +1,56 @@
+<snippet>
+    <content><![CDATA[
+/**
+ * Converts a <strong class="highlight">CSV</strong> file <strong class="highlight">to</strong> a simple <strong class="highlight">XML</strong> file
+ *
+ * @param string \$file
+ * @param string \$container
+ * @param string \$rows
+ * @return string
+ */
+
+error_reporting(E_ALL ^ E_NOTICE);
+ini_set("display_errors", true);
+
+function csv2xml(\$file, \$container = 'data', \$rows = 'row'){
+    \$r = "<{\$container}>\n";
+    \$row = 0;
+    \$cols = 0;
+    \$titles = array();
+
+    \$handle = @fopen(\$file, 'r');
+    if (!\$handle) return \$handle;
+    
+    while ((\$data = fgetcsv(\$handle, 10000, ';')) !== FALSE){
+        if (\$row > 0) \$r .= "\t<{\$rows}>\n";
+        if (!\$cols) \$cols = count(\$data);
+        for (\$i = 0; \$i < \$cols; \$i++){
+            if (\$row == 0){
+                \$titles[\$i] = \$data[\$i];
+                continue;
+            }
+            \$r .= "\t\t<{\$titles[\$i]}>";
+            \$r .= utf8_encode(htmlspecialchars(\$data[\$i]));
+            \$r .= "</{\$titles[\$i]}>\n";
+        }
+        if (\$row > 0) \$r .= "\t</{\$rows}>\n";
+        \$row++;
+    }
+
+    fclose(\$handle);
+    \$r .= "</{\$container}>";
+    
+    return \$r;
+}
+\$xml = csv2xml('net.csv', 'xml', 'item');
+
+\$File = "net.xml"; 
+\$Handle = fopen(\$File, 'w');
+fwrite(\$Handle, \$xml); 
+fclose(\$Handle); 
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>csv2xml</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

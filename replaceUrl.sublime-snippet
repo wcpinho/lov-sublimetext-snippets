@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+//usage: \$(element).replaceUrl();
+jQuery.fn.replaceUrl = function() {
+    var regexp = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
+    return this.each(function() {
+        \$(this).html(\$(this).html().replace(regexp,'<a href="\$1">\$1</a>'));
+    });
+};
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>replaceUrl</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

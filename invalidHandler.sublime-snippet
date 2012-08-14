@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+invalidHandler: function(){
+    var erros = \$(this).validate().numberOfInvalids()
+    if(erros > 0){
+        alert('Para completar o envio da sua mensagem, você precisa completar os itens que aparecem em vermelho.')
+    }
+    if(!\$(this).validate().element("#estouCiente")){
+        alert('Para completar o envio da sua mensagem, você precisa clicar no item \"Estou ciente dos termos e condições de uso deste site\"')
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>invalidHandler</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>
