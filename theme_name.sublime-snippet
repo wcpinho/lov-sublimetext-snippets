@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+/*
+Theme Name: ${1:NOME_DO_TEMA}
+Theme URI: http://www.lov.com.br/
+Description: Tema para Wordpress desenvolvido para ${1:NOME_DO_TEMA}.
+Author: Lov
+Version: 1.0
+Tags: ${1:NOME_DO_TEMA}, Lov, lov.com.br
+*/
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>theme_name</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.css</scope>
+</snippet>
