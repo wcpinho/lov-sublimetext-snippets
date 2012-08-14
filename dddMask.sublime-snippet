@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+\$(".ddd").mask("99").blur(function(){
+    if (\$(this).val() == '11') {
+        \$(".tel").mask("9999-9999?9").live('focusout', function(event){
+            var target, phone, element;
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+            phone = target.value.replace(/\D/g, '');
+            element = \$(target);
+            element.unmask();
+            (phone.length > 8) ? element.mask("99999-999?9") : element.mask("9999-9999?9");
+        });
+    } else {
+        \$(".tel").unmask().mask("9999-9999");
+    }
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dddMask</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

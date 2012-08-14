@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+function age(\$date){
+    list(\$year,\$month,\$day) = explode("-",\$date);
+    \$year_diff  = date("Y") - \$year;
+    \$month_diff = date("m") - \$month;
+    \$day_diff   = date("d") - \$day;
+    if (\$day_diff < 0 || \$month_diff < 0) \$year_diff--;
+    return \$year_diff;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.php</scope>
+</snippet>

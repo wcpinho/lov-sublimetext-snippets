@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+\$.extend({
+    ${1:METHOD}: function(${2:VARS}){
+        ${3:commands}
+    }
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>extend</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

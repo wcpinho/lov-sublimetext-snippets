@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+\$.fn.extend({ 
+    embedYoutube: function(text) {
+        return this.each(function() {
+            \$urlVideo = \$(this).find("a").attr("href");
+            \$urlVideo = \$urlVideo.replace(new RegExp("watch\\?v=", "i"), 'embed/');
+            \$(this).html("").append('<iframe src="'+ \$urlVideo +'" width="'+ \$(this).width() +'" height="'+ \$(this).height() +'" frameborder="0"></iframe>');
+        });
+    }
+});]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>embedYoutube</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

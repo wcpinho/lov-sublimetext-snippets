@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+\$(".tel").mask("(99) 9999-9999?9").live('focusout', function (event) {
+    var target, phone, element;
+    target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+    phone = target.value.replace(/\D/g, '');
+    element = \$(target);
+    element.unmask();
+    (phone.length > 10) ? element.mask("99999-999?9") : element.mask("9999-9999?9");
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>telMask</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

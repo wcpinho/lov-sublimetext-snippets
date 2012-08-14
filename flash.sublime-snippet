@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+\$("${1:selector}").flash({ src: '${2:swf}', width: ${3:450}, height: ${4:320}, wmode: 'transparent' }, { version: 10 });
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>flash</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

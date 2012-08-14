@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+flashvars: { ${1:variavel}: [${2:value}].join(' ') }
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>flashvars</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

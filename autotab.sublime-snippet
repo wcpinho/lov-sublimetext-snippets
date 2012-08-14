@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+//usage: \$(element).autotab();
+jQuery.fn.autotab = function(){
+    jQuery(this).keyup(function(e){
+        switch(e.keyCode){
+            case (9 || 16 || 20):
+                return false;
+            break;            
+            default:
+                var maxlength = jQuery(this).attr('maxlength');
+                var inputlength = jQuery(this).val().length;
+                if (inputlength >= maxlength){
+                    jQuery(this).next('input[type="text"]').focus();
+                }
+            break;
+        }
+    });
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>autotab</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

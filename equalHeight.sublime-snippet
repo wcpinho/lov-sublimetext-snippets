@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+\$.fn.equalHeight = function(){
+    var height	= 0;
+    var maxHeight	= 0;
+    this.each(function(){
+        height	= jQuery(this).outerHeight();
+        maxHeight	= (height > maxHeight) ? height : maxHeight;
+    });
+    return this.each(function(){
+        var t		= jQuery(this);
+        var minHeight	= maxHeight - (t.outerHeight() - t.height());
+        var property	= jQuery.browser.msie && jQuery.browser.version < 7 ? 'height' : 'min-height';
+        t.css(property, minHeight + 'px');
+    });
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>equalHeight</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

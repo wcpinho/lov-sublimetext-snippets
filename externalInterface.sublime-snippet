@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+(function(\$){
+    \$.fn.externalInterface = function(args){
+        this.each(function(){
+            if(typeof(args.method) != 'undefined'){
+                try{
+                    if(typeof(args.args) != 'undefined'){
+                        var data = this[args.method](args.args);
+                    }else{
+                        var data = this[args.method]();
+                    }
+                    if(typeof(args.success) != 'undefined'){
+                        args.success(data);
+                    }
+                }catch(error){
+                    if(typeof(args.error) != 'undefined'){
+                        args.error(error);
+                    }
+                }
+            }
+        });
+        return this;
+    };
+})(jQuery);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>externalInterface</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+//usage: \$("a:${1:rel}").css("background", "#C0C0C0");
+\$.expr[':'].${1:rel} = function(obj, index, meta, stack){
+    // obj - é o elemento DOM
+    // index - o index do loop no stack
+    // meta - meta data sobre seu seletor
+    // stack - stack de todos os elementos do loop
+    // Return true para incluir o elemento em questão
+    // Return false para excluir o elemento em questão
+    var \$this = \$(obj);
+    return (\$this.attr('${1:rel}') != '');
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>custom_selector</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

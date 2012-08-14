@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+\$addThis = {
+    init: function(){
+        var addthisurl = 'http://s7.addthis.com/js/250/addthis_widget.js';
+        if (window.addthis) {
+            window.addthis = null;
+        }
+        window.addthis_share = {
+            templates: { twitter: '@${1:twitter_username} {{title}} {{url}}' }
+        }
+        \$.getScript(addthisurl);
+    }
+}
+\$addThis.init();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>addthis</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
