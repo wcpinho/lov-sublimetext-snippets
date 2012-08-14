@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+<?php \$${1:query} = new WP_Query('posts_per_page=5&post_type=encontro'); ?>
+<?php if (\$${1:query}->have_posts()) : ?>
+    <?php while (\$${1:query}->have_posts()) : \$${1:query}->the_post(); ?>
+        ${2}
+    <?php endwhile; ?>
+<?php endif; ?>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wp_query</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -6,6 +6,7 @@
 + jQuery
 + PHP
 + CSS
++ Wordpress
 
 ---
 

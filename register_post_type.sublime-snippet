@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+register_post_type('${1:slug}', array(
+	${2:'label' => '${3:Plural Name}',}
+	${4:'labels' => array(
+		${5:'name' => '${6:$3}',}
+		${7:'singular_name' => '${8:Singular Name}',}
+		${9:'add_new' => '${10:Add new}',}
+		${11:'add_new_item' => '$10 ${12:$8}',}
+		${13:'edit_item' => 'Edit ${14:$8}',}
+		${15:'new_item' => 'New ${16:$8}',}
+		${17:'view_item' => 'View ${18:$8}',}
+		${19:'search_items' => '${20:Search $3}',}
+		${21:'not_found' => '${22:No $3 found}',}
+		${23:'not_found_in_trash' => '${24:No $3 found in Trash}',}
+	),}
+	${25:'description' => '${26:Description}',}
+	${27:'public' => ${28:true},}
+	${29:'publicly_queryable' => ${30:true},}
+	${31:'exclude_from_search' => ${32:true},}
+	${33:'show_ui' => ${34:true},}
+	${35:'show_in_menu' => ${36:true},}
+	${37:'menu_position' => ${38:null},}
+	${39:'menu_icon' => '${40:iconurl}',}
+	${41:'capability_type' => '${42:post}',}
+	${43:'map_meta_cap' => ${44:false},}
+	${45:'hierarchial' => ${46:false},}
+	${47:'supports' => array(${48:'title',}${49: 'editor',}${50: 'author',}${51: 'thumbnail',}${52: 'excerpt',}${53: 'trackbacks',}${54: 'custom-fields',}${55: 'comments',}${56: 'revisions',}${57: 'page-attributes',}${58: 'post-formats',}),}
+	${59:'register_meta_box_cb' => '${60:}',}
+	${61:'taxonomies' => array(${62:'category'}),}
+	${63:'permalink_epmask' => ${64:EP_PERMALINK},}
+	${65:'has_archive' => ${66:false},}
+	${67:'rewrite' => ${68:array(
+		${69:'slug' => '${70:$1}',}
+		${71:'with_front' => ${72:true},}
+		${73:'feeds' => ${74:$66},}
+		${75:'pages' => ${76:true},}
+	)},}
+	${69:'query_var' => ${70:true},}
+	${71:'can_export' => ${72:true},}
+	${73:'show_in_nav_menus' => ${74:$28},}
+));
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>register_post_type</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
