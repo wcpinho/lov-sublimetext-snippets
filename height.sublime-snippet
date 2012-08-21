@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[height: ${1:100}px; ]]></content>
+	<tabTrigger>hei</tabTrigger>
+    <description>CSS - height: value;</description>
+    <scope>source.css</scope>
+</snippet>

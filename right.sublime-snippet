@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[right: 0; ]]></content>
+	<content><![CDATA[right: ${1:0}px; ]]></content>
 	<tabTrigger>rig</tabTrigger>
     <description>CSS - right: 0;</description>
     <scope>source.css</scope>

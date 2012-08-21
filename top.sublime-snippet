@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[top: 0px; ]]></content>
+	<content><![CDATA[top: ${1:0}px; ]]></content>
 	<tabTrigger>top</tabTrigger>
     <description>CSS - top: 0;</description>
     <scope>source.css</scope>

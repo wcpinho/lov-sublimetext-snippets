@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[margin: 0; ]]></content>
+	<content><![CDATA[margin: ${1:0}px; ]]></content>
 	<tabTrigger>mar</tabTrigger>
     <description>CSS - margin: 0;</description>
     <scope>source.css</scope>

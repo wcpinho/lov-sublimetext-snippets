@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[width: ${1:100}px; ]]></content>
+	<tabTrigger>wid</tabTrigger>
+    <description>CSS - width: value;</description>
+    <scope>source.css</scope>
+</snippet>
