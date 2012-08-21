@@ -1,7 +1,5 @@
 <snippet>
-	<content><![CDATA[bottom: 0;
-
-]]></content>
+	<content><![CDATA[bottom: 0px; ]]></content>
 	<tabTrigger>bot</tabTrigger>
     <description>CSS - bottom: 0;</description>
     <scope>source.css</scope>

@@ -4,7 +4,6 @@
     -ms-transform: $1;
      -o-transform: $1;
         transform: $1;
-
 ]]></content>
 	<tabTrigger>transform</tabTrigger>
     <description>CSS - transform: ;</description>

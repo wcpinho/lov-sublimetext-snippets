@@ -4,7 +4,6 @@
     font-style: italic;
     font-weight: normal;
 }
-
 ]]></content>
 	<tabTrigger>amp</tabTrigger>
     <description>CSS - .amp {}</description>

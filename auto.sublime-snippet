@@ -1,7 +1,5 @@
 <snippet>
-	<content><![CDATA[margin: 0 auto;
-
-]]></content>
+	<content><![CDATA[margin: 0 auto; ]]></content>
 	<tabTrigger>aut</tabTrigger>
     <description>CSS - margin: 0 auto;</description>
     <scope>source.css</scope>

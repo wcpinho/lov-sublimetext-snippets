@@ -19,7 +19,6 @@
 	0% { $2 }
 	100% { $3 }
 }
-
 ]]></content>
 	<tabTrigger>key</tabTrigger>
     <description>CSS - @keyframes {}</description>

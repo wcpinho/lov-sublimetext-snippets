@@ -3,7 +3,6 @@
 	content: '';
 	$2
 }
-
 ]]></content>
 	<tabTrigger>aft</tabTrigger>
     <description>CSS - :after</description>
