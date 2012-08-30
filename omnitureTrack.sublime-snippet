@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[
+/* OMNITURE TRACK */
+\$("[data-omniture-track]").live("click", function() {
+    \$v = \$(this).attr('data-omniture-track');
+    \$s1 = \$("meta[name='omniture-track']").attr("s1") + ':' + \$v;
+    \$s2 = \$("meta[name='omniture-track']").attr("s2");
+    \$s3 = \$("meta[name='omniture-track']").attr("s3") + '|' + \$v;
+    track(\$s1, \$s2, \$s3);
+});
+
+\$("[data-omniture-event]").live("click", function() {
+    \$str = \$("meta[name='omniture-event']").attr("content") + '|' + \$(this).attr('data-omniture-event');
+    omnEvent(\$str);
+});
+/* OMNITURE TRACK */
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>omnitureTrack</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>
