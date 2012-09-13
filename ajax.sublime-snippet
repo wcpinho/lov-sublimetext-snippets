@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[
 \$.ajax({
-    type: '${1:GET|POST}',
+    type: '${1:GET}',
     data: \$("${2}").serialize(),
     dataType: "${3:json}",
     url: '${4:url}',
     success: function(${3:json}) {
-        ${6}
+        ${6:commands}
     }
 });
 ]]></content>
