@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+<meta name="twitter:card" content="${1:summary}">
+<meta name="twitter:site" content="@${2:site}">
+<meta name="twitter:creator" content="@${3:creator}">
+<meta name="twitter:title" content="${4:title}">
+<meta name="twitter:description" content="${5:description}">
+<meta name="twitter:image" content="${6:image}">
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>twittercards</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
