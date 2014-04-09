@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+<?php if (have_posts()) : ?>
+    <?php while (have_posts()) : the_post(); ?>
+        ${1}
+    <?php endwhile; ?>
+<?php endif; ?>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>query_posts</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>
